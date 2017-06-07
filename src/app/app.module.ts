@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
+import * as firebase from 'firebase';
 import { AngularFireModule} from 'angularfire2';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {firebaseConfig} from '../environments/firebase.config';
-import {Ng2PageScrollModule} from 'ng2-page-scroll';
+//import {Ng2PageScrollModule} from 'ng2-page-scroll';
+
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,13 +21,24 @@ import { ContactComponent } from './components/contact/contact.component';
 import { MainComponent } from './components/main/main.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {FirebaseService} from './service/firebase.service';
+
+import {AuthService} from './service/auth.service';
+import {AuthGuardService} from './service/auth-guard.service';
+
+import { SignupComponent } from './components/signup/signup.component';
+
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
   {path:'resources', component:ResourcesComponent},
+  {path:'signup', component:SignupComponent},
   {path:'fromresources/:pagename', component:MainComponent},
+  {path:'signup/:logout', component:SignupComponent},
 ]
+
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -36,18 +50,20 @@ const appRoutes: Routes = [
     PortfolioComponent,
     ContactComponent,
     MainComponent,
-    ResourcesComponent
+    ResourcesComponent,
+  
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     FlashMessagesModule,
-    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig),
-    Ng2PageScrollModule.forRoot()
+    RouterModule.forRoot(appRoutes)
+    //Ng2PageScrollModule.forRoot()
   ],
-  providers: [],
+  providers: [FirebaseService,AuthService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,50 @@
+
+
+<section  class="bg-primary" id="signup">
+    <div class="container">
+      <form (ngSubmit)="onSignup(f)" #f="ngForm">
+      <div class="row" *ngIf="!displayForgotPassword else other_content">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <div class="form-group">
+              <label for="email">Mail</label>
+              <input type="email" id="email" name="email" ngModel class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" ngModel class="form-control">
+            </div>
+            <div class="form-group" *ngIf="displayConfirmPassword">
+              <label for="confpassword">Confirm Password</label>
+              <input type="password" id="confpassword" name="confpassword" ngModel class="form-control">
+            </div>
+
+            <button *ngIf="!displayConfirmPassword" class="btn btn-success" type="submit" [disabled]="!f.valid">Login</button>
+            <button *ngIf="displayConfirmPassword" class="btn btn-success" type="submit" [disabled]="!f.valid">Sign Up</button>
+
+            <div padding-top>
+              <a class="btn btn-primary"  block color="light" *ngIf="!displayConfirmPassword" clear (click)="displaySignup()">If new member ? SIGNUP</a>
+              <a class="btn btn-primary"  block color="light" *ngIf="!displayConfirmPassword" clear (click)="displayForgotPasswordScreen()">Forgot Password</a>
+              <a class="btn btn-primary"  block color="light" *ngIf="displayConfirmPassword" clear (click)="displayLogin()">Back to Login</a>
+            </div>
+          </div>
+    </div>
+    <ng-template #other_content>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <div class="form-group">
+              <label for="forgetemail">Mail</label>
+              <input type="email" id="forgetemail" name="forgetemail" ngModel class="form-control">
+            </div>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit" [disabled]="!f.valid">Reset Password</button>
+
+      <div padding-top>
+        <a class="btn btn-primary"  block color="light" clear (click)="displayLogin()">Back to Login</a>
+      </div>
+    </ng-template>
+</form>
+</div>
+</section>
