@@ -1,12 +1,32 @@
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class AuthService {
   token: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,public afauth: AngularFireAuth)
+  {
+    this.afauth.authState.subscribe(user => {
+          if(user) {
+            // user logged in
+            console.log('user is:' + user.email);
+            this.getToken();
+          }
+          else {
+            //
+              console.log('user not logged in');
+            //this.user = {};
+          }
+        });
+  }
+
+  signInWithPopup()
+  {
+    return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  }
 
   signupUser(email: string, password: string)
   {
@@ -38,15 +58,16 @@ export class AuthService {
   }
 
   getToken() {
-    firebase.auth().currentUser.getToken()
+    firebase.auth().currentUser.getIdToken()
       .then(
-        (token: string) => this.token = token
+        (token: string) => {this.token = token; console.log('token is:'+this.token)}
       );
     return this.token;
   }
 
 
   isAuthenticated() {
+    console.log('this.token:' + firebase.auth().currentUser);
     return this.token != null;
   }
 }

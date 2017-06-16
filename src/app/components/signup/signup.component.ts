@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../service/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {FlashMessagesModule} from 'angular2-flash-messages';
@@ -15,6 +16,9 @@ export class SignupComponent implements OnInit {
   token: string;
   displayConfirmPassword = false;
   displayForgotPassword = false;
+  error: any;
+  infomessage:any;
+
   constructor(public authService: AuthService,
     private router: Router,
     private route:ActivatedRoute,) { }
@@ -50,6 +54,8 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm)
   {
     console.log('onSignup:' + form);
+    this.error = null;
+    this.infomessage = null;
     if (!this.displayConfirmPassword && !this.displayForgotPassword)
     {
       this.doLogin(form);
@@ -70,7 +76,8 @@ export class SignupComponent implements OnInit {
     .then (
       response => {
         console.log('inside  reset response is: ' + response);
-        alert('Email sent at:'+ email + ': to reset password');
+        //alert('Email sent at:'+ email + ': to reset password');
+        this.infomessage = 'Email sent at:'+ email + ': to reset password';
         this.displayLogin();
       }
     )
@@ -78,7 +85,7 @@ export class SignupComponent implements OnInit {
       error =>
       {
         console.log('inside  reset error:' + error);
-        alert( error.message);
+        this.error = error.message;
       }
     )
   }
@@ -96,7 +103,7 @@ export class SignupComponent implements OnInit {
         console.log('inside  response is: ' + response);
         this.authService.getToken();
         this.router.navigate(['/']);
-        alert(email + ' :successfully logged in');
+        //alert(email + ' :successfully logged in');
         //return response;
       }
     )
@@ -104,10 +111,23 @@ export class SignupComponent implements OnInit {
       error =>
       {
         console.log('inside  error:' + error);
-        alert( error.message);
+        this.error = error.message;
+
       }
     )
 
+  }
+
+  loginGoogle()
+  {
+    this.authService.signInWithPopup().then(
+        (success) => {
+          this.authService.getToken();
+        this.router.navigate(['/']);
+      }).catch(
+        (err) => {
+        this.error = err;
+      });
   }
 
   doSignup(form: NgForm)
@@ -123,7 +143,7 @@ export class SignupComponent implements OnInit {
         console.log('inside  response is: ' + response);
         this.authService.getToken();
         this.router.navigate(['/']);
-        alert(email + ' :successfully created');
+        //alert(email + ' :successfully created');
         //return response;
       }
     )
@@ -131,7 +151,7 @@ export class SignupComponent implements OnInit {
       error =>
       {
         console.log('inside  error:' + error);
-        alert( error.message);
+        this.error = error.message;
       }
     )
 

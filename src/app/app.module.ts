@@ -29,11 +29,16 @@ import {AuthGuardService} from './service/auth-guard.service';
 
 import { SignupComponent } from './components/signup/signup.component';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import {ResourceService} from './service/resource.service';
+import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
   {path:'resources', component:ResourcesComponent},
   {path:'signup', component:SignupComponent},
+  
   {path:'fromresources/:pagename', component:MainComponent},
   {path:'signup/:logout', component:SignupComponent},
 ]
@@ -51,8 +56,9 @@ firebase.initializeApp(firebaseConfig);
     ContactComponent,
     MainComponent,
     ResourcesComponent,
-  
     SignupComponent,
+
+    ResourcefilterPipe
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,7 @@ firebase.initializeApp(firebaseConfig);
     RouterModule.forRoot(appRoutes)
     //Ng2PageScrollModule.forRoot()
   ],
-  providers: [FirebaseService,AuthService,AuthGuardService],
+  providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,ResourceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
