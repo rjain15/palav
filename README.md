@@ -1,17 +1,23 @@
 # Building Palav Website
 
 ## Requirements
+The Palav website is built using bootstrap, angular, firebase and wercker.
 
-## Proplistings
+## Update to Website
+Updates to the website could be static content{text , images, videos} , or dynamic content which is data in firebase.
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+The main app components are in `src\app\{app.component.*}` files.
+Individual app components are in `src\app\components\{*.component.*}` files.
+Service components are in `src\app\service\{*.component.*}` files.
+
+In order to update the static content you have to change the appropriate `app` component html.
+For e.g. If you want to update the `home` section, update the `src\app\components\home\home.component.html`
+
+In order to update the dynamic content you have to change the `service\*.ts` files. 
+The preloaded sample data is in the `data\palav.json` file.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
 ## Build
 
