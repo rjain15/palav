@@ -30,7 +30,7 @@ build:
 
 deploy-firebase:
   steps:
-    - devillex/firebase-deploy@1.0.0:
+    - devillex/firebase-deploy@1.1.0:
         project: $FIREBASE_PROJECT_NAME
         token: $FIREBASE_TOKEN
   after-steps:
