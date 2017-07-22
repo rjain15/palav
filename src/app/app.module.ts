@@ -33,12 +33,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import {ResourceService} from './service/resource.service';
 import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
+import { VideoComponent } from './components/video/video.component';
+
+import { SafePipe } from './pipes/safe.pipe';
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
   {path:'resources', component:ResourcesComponent},
   {path:'signup', component:SignupComponent},
-  
+
   {path:'fromresources/:pagename', component:MainComponent},
   {path:'signup/:logout', component:SignupComponent},
 ]
@@ -58,7 +61,13 @@ firebase.initializeApp(firebaseConfig);
     ResourcesComponent,
     SignupComponent,
 
-    ResourcefilterPipe
+    ResourcefilterPipe,
+
+    VideoComponent,
+
+
+
+    SafePipe
   ],
   imports: [
     BrowserModule,
