@@ -8,6 +8,7 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
+        { "glob": "**/*", "input": "../node_modules/nanogallery2/dist", "output": "./assets/vendor/nanogallery2" },
         "assets",
         "favicon.ico"
       ],
