@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-  youtubelink:string = 'https://www.youtube.com/embed/wdY2bEh9XbE?listType=playlist&list=PL7hPeebx3kz3VVLUWdChx0KG6PWyKddk4';
+  youtubelink:string = 'https://www.youtube.com/embed/videoseries?list=PLbTNZNtSmrpoUVan0LVqTP3qu_9_aMr6P';
   constructor() { }
 
   ngOnInit() {
