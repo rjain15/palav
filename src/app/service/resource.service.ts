@@ -13,10 +13,19 @@ export class ResourceService
 {
   resourcedatpath: string = '/Palav/data/';
   items: FirebaseListObservable<any[]>;
-  constructor(private http: Http,public afd: AngularFireDatabase) { }
+  listings: FirebaseListObservable<any[]>;
+  
+  constructor(private http: Http,public afd: AngularFireDatabase) {
+	  this.listings = this.afd.list('/Palav/saveinfo/');
+  }
 
   getResourceData(): Observable<ResourcesData[]>
   {
     return this.afd.list(this.resourcedatpath);
+  }
+
+  updateResourceData(listing)
+  {
+	return this.listings.push(listing);
   }
 }

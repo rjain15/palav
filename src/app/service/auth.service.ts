@@ -65,6 +65,10 @@ export class AuthService {
     return this.token;
   }
 
+getUser()
+{
+  return firebase.auth().currentUser;
+}
 
   isAuthenticated() {
     console.log('this.token:' + firebase.auth().currentUser);

@@ -3,6 +3,9 @@ import { ResourcesData } from './resourcesdata';
 import {ResourceService} from '../../service/resource.service';
 import {AuthService} from '../../service/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import * as firebase from 'firebase';
+import { ResourceInfo } from './resourceInfo'
+
 
 @Component({
   selector: 'app-resources',
@@ -20,6 +23,7 @@ export class ResourcesComponent implements OnInit
   limit: number;
   minYear: number = 1996;
   maxYear: number = 2017;
+
 
   constructor(private resourceService: ResourceService,
              private authService: AuthService,
@@ -62,11 +66,30 @@ export class ResourcesComponent implements OnInit
   {
     if (this.authService.isAuthenticated())
     {
-      console.log('resourcesData is:' + this.resourcesData);
-      alert('You are logged into Palav, please proceed with save resources');
+     // console.log('resourcesData is:' + this.resourcesData);
+      //alert('You are logged into Palav, please proceed with save resources');
+     // let resourceInfoArr: ResourceInfo;
+      let resourcesDataArr: ResourcesData[];
+
+      this.resourcesData.forEach(snapshot =>
+      {
+	  console.log('resourcesData is:' + snapshot.id + ':' + snapshot.noOfEquipments);	
+	  if (snapshot.noOfEquipments >= 1 )
+	  {
+		  if (!resourcesDataArr)
+		  {
+			resourcesDataArr = [snapshot];
+		  } else {
+			resourcesDataArr.push(snapshot);
+		  }
+	  }
+      });
+      let resourceInfo = new ResourceInfo(''+new Date(),this.authService.getUser().email,resourcesDataArr);
+	this.resourceService.updateResourceData(resourceInfo);
     } else {
       alert('you are not logged into Palav, please login first');
       this.router.navigate(['/signup']);
+
     }
 
   }

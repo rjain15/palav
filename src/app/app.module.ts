@@ -36,6 +36,7 @@ import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
 import { VideoComponent } from './components/video/video.component';
 
 import { SafePipe } from './pipes/safe.pipe';
+import { GoalsComponent } from './components/goals/goals.component';
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
@@ -67,7 +68,11 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-    SafePipe
+    SafePipe,
+
+
+
+    GoalsComponent
   ],
   imports: [
     BrowserModule,
