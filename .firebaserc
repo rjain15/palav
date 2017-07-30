@@ -2,6 +2,6 @@
   "projects": {
     "default": "palav-e8b2f",
     "palav-dev": "palav-e8b2f",
-    "staging": "jsgddir"
+    "staging": "palav-e8b2f"
   }
 }

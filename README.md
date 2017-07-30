@@ -41,6 +41,9 @@ To deploy to firebase, you can manually deploy. You will need the firebase `cli`
 If you want to automatically deploy this to firebase, you just have to commit to git and you are all set. There is a wercker pipeline set to pick up code committed on git and push it to firebase.
 
 
+## Functions in Firebase
+https://github.com/firebase/functions-samples/blob/master/email-confirmation/README.md
+
 
 ## Further help
 For further help on building and maintaining this website, reach out to Rajesh Jain <rjain15@gmail.com>
