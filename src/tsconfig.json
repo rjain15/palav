@@ -21,5 +21,7 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "files": [ "../node_modules/@types/youtube/index.d.ts" ]
+
 }
