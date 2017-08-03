@@ -24,6 +24,8 @@ export class ResourcesComponent implements OnInit
   minYear: number = 1996;
   maxYear: number = 2017;
 
+  saveresourcesData: ResourcesData[];
+  displaysaveinformation: boolean = false;
 
   constructor(private resourceService: ResourceService,
              private authService: AuthService,
@@ -62,6 +64,10 @@ export class ResourcesComponent implements OnInit
 	console.log('resourcesData is:'+resourcesData.id + ':' + resourcesData.noOfEquipments);
   }
 
+backToResource()
+{
+  this.displaysaveinformation = false;
+}
   saveReourceEquipmentInformation()
   {
     if (this.authService.isAuthenticated())
@@ -84,8 +90,17 @@ export class ResourcesComponent implements OnInit
 		  }
 	  }
       });
+
       let resourceInfo = new ResourceInfo(''+new Date(),this.authService.getUser().email,resourcesDataArr);
-	this.resourceService.updateResourceData(resourceInfo);
+
+      this.resourceService.updateResourceData(resourceInfo).then(
+      (item) =>
+      { 
+	console.log(item.key); 
+	this.saveresourcesData = resourcesDataArr;
+	this.displaysaveinformation = true;
+
+      });
     } else {
       alert('you are not logged into Palav, please login first');
       this.router.navigate(['/signup']);

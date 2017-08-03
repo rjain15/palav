@@ -2,9 +2,9 @@
 	<div class="container">
 
 		<div class="row">
-			<div class=".col-xs-12 col-md-12 .col-lg-12">
+			<div class=".col-xs-12 col-md-12 .col-lg-12" *ngIf="!displaysaveinformation">
 			<!--div class="table-responsive"-->
-				<form>
+				<form  >
 					<table class="table table-hover table-striped table-bordered">
 					  <thead>
 						<tr>
@@ -41,43 +41,50 @@
 									  <span class="glyphicon glyphicon-plus"></span>
 								  </button>
 							  </span>
-					      </div>
+							</div>
+							</td>
 						</tr>
 					  </tbody>
 					 </table>
 				</form>
 			</div>
+
+
+			<div class=".col-xs-12 col-md-12 .col-lg-12" *ngIf="displaysaveinformation">
+			<!--div class="table-responsive"-->
+				<form  >
+					<table class="table table-hover table-striped table-bordered">
+					  <thead>
+						<tr>
+						  <th  class="col-xs-1  col-md-1 col-lg-1">Id</th>
+						  <th  class="col-xs-3  col-md-3 col-lg-3">Title</th>
+						  <th class="col-xs-4  col-md-4 col-lg-4">Author/th>
+						  <th class="col-xs-3  col-md-3 col-lg-3">Year</th>
+						  <th class="col-xs-1  col-md-1 col-lg-1"></th>
+						</tr>
+					  </thead>
+					  <tfoot>
+						<tr>
+						  <td colspan="5" class="col-xs-1  col-md-1 col-lg-1">
+								<button class="btn btn-xs btn-primary btn-block" type="button" (click)="backToResource()">Back to Resources</button>
+						  </td>
+						</tr>
+					  </tfoot>
+					 <tbody>
+						<tr *ngFor="let item of saveresourcesData">
+						  <td class="col-xs-1  col-md-1 col-lg-1">  {{item.id}}</td>
+						  <td  class="col-xs-3  col-md-3 col-lg-3">{{item.title}}</td>
+						  <td  class="col-xs-4  col-md-4 col-lg-4">{{item.author}}</td>
+						  <td  class="col-xs-3  col-md-3 col-lg-3">{{item.year}}</td>
+						  <td  class="col-xs-1  col-md-1 col-lg-1">{{item.noOfEquipments}}</td>
+						</tr>
+					  </tbody>
+					 </table>
+				</form>
+			</div>
+
+
 		</div>
-	<!--div class="row">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th  class="col-xs-1">#</th>
-              <th class="col-xs-2">Table heading</th>
-              <th class="col-xs-3" >Table heading</th>
-              <th class="col-xs-2">Table heading</th>
-              <th class="col-xs-1">Table heading</th>
-              <th class="col-xs-2">Table heading</th>
-              <th class="col-xs-1">Table heading</th>
-            </tr>
-          </thead>
-          <tbody id="myTable" >
-			<tr *ngFor="let item of dataResourcesArr">
-			  <td class="col-xs-1">{{item.id}}</td>
-			  <td class="col-xs-2">{{item.name}}</td>
-			  <td class="col-xs-3">{{item.description}}</td>
-			  <td class="col-xs-2"><a href="#">{{item.field3}}</a></td>
-			  <td class="col-xs-1">{{item.field4}}</td>
-			  <td class="col-xs-2">{{item.field5}}</td>
-			  <td class="col-xs-1"><a href="#" ng-click="deleteItem($index)">x</a></td>
-			</tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-12 text-center">
-      <ul class="pagination pagination-lg pager" id="myPager"></ul>
-      </div>
-	</div-->
+	
 </div>
 </div>

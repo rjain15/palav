@@ -20,6 +20,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MainComponent } from './components/main/main.component';
 import { ResourcesComponent } from './components/resources/resources.component';
+import { EventComponent } from './components/events/event.component';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {FirebaseService} from './service/firebase.service';
@@ -32,6 +33,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import {ResourceService} from './service/resource.service';
+import {ContactService} from './service/contact.service';
+import {EventService} from './service/event.service';
+
 import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
 import { VideoComponent } from './components/video/video.component';
 
@@ -61,17 +65,10 @@ firebase.initializeApp(firebaseConfig);
     MainComponent,
     ResourcesComponent,
     SignupComponent,
-
+    EventComponent,
     ResourcefilterPipe,
-
     VideoComponent,
-
-
-
     SafePipe,
-
-
-
     GoalsComponent
   ],
   imports: [
@@ -83,7 +80,7 @@ firebase.initializeApp(firebaseConfig);
     RouterModule.forRoot(appRoutes)
     //Ng2PageScrollModule.forRoot()
   ],
-  providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,ResourceService],
+  providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,ResourceService,ContactService,EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

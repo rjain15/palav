@@ -1,4 +1,4 @@
-<section id="services">
+<section id="events">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -7,7 +7,22 @@
             </div>
         </div>
     </div>
-    <div class="container">
+
+	<div class="container">
+
+	 <div class="carousel">
+	  <ul class="slides">
+
+		<li *ngFor="let item of  eventData">
+	      <h2>{{item.eventname}}</h2>
+		  <img [src]="item.eventimage" alt="">
+	    </li>   
+	  </ul>
+	</div>
+
+
+	</div>
+    <!--div class="container">
         <div class="row">
             <div class="col-xs-12 text-md-right lead">
                 <a class="btn btn-outline-secondary prev" href="" title="go back"><i class="fa fa-lg fa-chevron-left"></i></a>
@@ -98,6 +113,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div-->
 
 </section>
