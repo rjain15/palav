@@ -4,8 +4,6 @@ import {
   OnInit
 } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -13,25 +11,24 @@ import {
 
 })
 
+
 export class VideoComponent implements OnInit {
 
-  private id: string = 'qDuKsiwS5xw';
-  p: YT.Player;
+  //private id: string = 'qDuKsiwS5xw';
+  player: YT.Player;
   done = false;
-
+  //
   youtubelink: string = 'https://www.youtube.com/embed/videoseries?list=PLbTNZNtSmrpoUVan0LVqTP3qu_9_aMr6P';
 
   constructor() {
+  }
 
-    this.p = new YT.Player('player', {
-        height: 390,
-        width: 640,
-        videoId: 'M7lc1UVf-VE',
-        events: {
-            'onReady': this.onPlayerReady,
-            'onStateChange': this.onStateChange
-        }
-    });
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  savePlayer(player) {
+    this.player = player;
+    this.player.setSize(540,360);
+    this.player.cuePlaylist({list:'PLbTNZNtSmrpoUVan0LVqTP3qu_9_aMr6P'})
   }
 
   ngOnInit() {
@@ -45,18 +42,9 @@ export class VideoComponent implements OnInit {
   onPlayerReady(event) {
     event.target.playVideo();
   }
-  // 5. The API calls this function when the player's state changes.
-  //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
-  onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !this.done) {
-      setTimeout(this.stopVideo, 6000);
-      this.done = true;
-    }
-  }
 
   stopVideo() {
-    this.p.stopVideo();
+    this.player.stopVideo();
   }
 
 }

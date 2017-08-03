@@ -1,6 +1,8 @@
 <section class="bg-primary" id="videos">
-    <div class="container">
-      <div id="player">
-      </div>
+  <div class="container">
+    <div id="player">
+      <youtube-player [videoId]="id" (ready)="savePlayer($event)" (change)="onStateChange($event)">
+      </youtube-player>
+
     </div>
-</section>
+  </div></section>

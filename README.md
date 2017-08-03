@@ -2,6 +2,7 @@
 
 ## Requirements
 The Palav website is built using bootstrap, angular, firebase and wercker.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
 
 ## Update to Website
 Updates to the website could be static content{text , images, videos} , or dynamic content which is data in firebase.
