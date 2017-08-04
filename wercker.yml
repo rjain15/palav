@@ -14,6 +14,9 @@ build:
           echo "npm version $(npm -v) running"
           echo "ng --version"
     - script:
+        name: npm function
+        code: cd functions ; npm install ; cd ..
+    - script:
         name: run ng build
         code: ng build
     # - script:

@@ -6,12 +6,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent
-{
+export class AppComponent {
   title = 'app works!';
-user = {};
-  constructor(public af: AngularFireAuth)
-  {
+  user = {};
+  constructor(public af: AngularFireAuth) {
     /*this.af.authState.subscribe(user => {
           if(user) {
             // user logged in

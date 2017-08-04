@@ -1,14 +1,14 @@
-import { ProplistingsPage } from './app.po';
+import { PalavPage } from './app.po';
 
-describe('proplistings App', function() {
-  let page: ProplistingsPage;
+describe('palav App', () => {
+  let page: PalavPage;
 
   beforeEach(() => {
-    page = new ProplistingsPage();
+    page = new PalavPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

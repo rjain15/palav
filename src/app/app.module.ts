@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+// Adding the youtube https://github.com/orizens/ng2-youtube-player module
+import { YoutubePlayerModule } from 'ng2-youtube-player';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
@@ -73,6 +77,8 @@ firebase.initializeApp(firebaseConfig);
   ],
   imports: [
     BrowserModule,
+    // Adding the youtube module
+    YoutubePlayerModule,
     FormsModule,
     HttpModule,
     FlashMessagesModule,

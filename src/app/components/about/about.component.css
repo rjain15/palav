@@ -1,13 +1,17 @@
-.svg-container { 
+.world {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/India_map_en.svg');
+}
+
+.svg-container {
 	display: inline-block;
 	position: relative;
 	width: 100%;
 	/*padding-bottom: 100%; */
-	vertical-align: middle; 
-	overflow: hidden; 
+	vertical-align: middle;
+	overflow: hidden;
 }
 
-text {  
+text {
   fill: #fff;
   font-size: 4rem;
   font-family: sans-serif;
@@ -108,15 +112,15 @@ text {
   /*resize:both;*
 }
 
-svg {  
+svg {
   height: 100%;
 }
 
-circle {  
+circle {
   fill: #3DB8A4;
 }
 
-text {  
+text {
   fill: #fff;
   font-size: 4rem;
   font-family: sans-serif;
@@ -139,8 +143,8 @@ text {
 }
 */
 
-/**http://codeitdown.com/css-circles/ 
-.circle-text { 
+/**http://codeitdown.com/css-circles/
+.circle-text {
     width:50%;
 }
 .circle-text:after {
@@ -149,9 +153,9 @@ text {
     width: 100%;
     height:0;
     padding-bottom: 100%;
-    background: #4679BD; 
-    -moz-border-radius: 50%; 
-    -webkit-border-radius: 50%; 
+    background: #4679BD;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
     border-radius: 50%;
 }
 .circle-text div {
