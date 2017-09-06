@@ -11,26 +11,27 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
+
                     <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
                     <h3>Donate</h3>
                     <p class="text-muted">Our templates are updated regularly so they don't break.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
+                <div class="service-box" data-toggle="modal" data-target="#add-sponser-modal">
                     <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
                     <h3>Sponsor</h3>
                     <p class="text-muted">You can use this theme as is, or you can make changes!</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
+            <div class="col-lg-3 col-md-6 text-center" data-toggle="modal" data-target="#add-volunteer-modal">
                 <div class="service-box">
                     <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
                     <h3>Volunteer</h3>
                     <p class="text-muted">We update dependencies to keep things fresh.</p>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
+            <div class="col-lg-3 col-md-6 text-center" data-toggle="modal" data-target="#add-hospital-modal">
                 <div class="service-box">
                     <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
                     <h3>Identify a Hospital</h3>
@@ -39,4 +40,120 @@
             </div>
         </div>
     </div>
+
+
+    <!-- SPONSER Modal -->
+    <div class="modal fade" id="add-sponser-modal" tabindex="-1" role="dialog"
+      aria-labelledby="sponserModalLabel">
+
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="sponserModalLabel">Add Sponser</h4>
+          </div>
+          <form id="sponser" (ngSubmit)="savesponser(s)" #s="ngForm">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Sponser:</label>
+                <fieldset>
+        				  <input placeholder="Your name" class="form-control" type="text" id="sponsername" ngModel name="sponsername" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label">Message:</label>
+                <fieldset>
+        				  <input placeholder="Message" class="form-control" type="text" id="messagetext" ngModel name="messagetext" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" #closesponser>Cancel</button>
+            <button  type="submit" id="sponser-submit" class="btn btn-primary">Save Sponser</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END SPONSER Modal -->
+
+    <!-- VOLUNTEER Modal -->
+    <div class="modal fade" id="add-volunteer-modal" tabindex="-1" role="dialog"
+      aria-labelledby="volunteerModalLabel">
+
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="volunteerModalLabel">Add Volunteer</h4>
+          </div>
+          <form id="volunteer" (ngSubmit)="savevolunteer(v)" #v="ngForm">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Volunteer:</label>
+                <fieldset>
+        				  <input placeholder="Your name" class="form-control" type="text" id="volunteername"
+                  ngModel name="volunteername" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label">Message:</label>
+                <fieldset>
+        				  <input placeholder="Volunteer Message" class="form-control" type="text" id="volunteermessagetext"
+                  ngModel name="volunteermessagetext" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" #closevolunteer>Cancel</button>
+            <button  type="submit" id="volunteer-submit" class="btn btn-primary">Save Volunteer</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END VOLUNTEER Modal -->
+
+    <!-- IDENTIFY HOSPITAL Modal -->
+    <div class="modal fade" id="add-hospital-modal" tabindex="-1" role="dialog"
+      aria-labelledby="hospitalModalLabel">
+
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="hospitalModalLabel">Add Hospital</h4>
+          </div>
+          <form id="hospital" (ngSubmit)="savehospital(h)" #h="ngForm">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="control-label">Hospital:</label>
+                <fieldset>
+        				  <input placeholder="Hospital name" class="form-control" type="text" id="hospitalname"
+                  ngModel name="hospitalname" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="control-label">Hospital Message:</label>
+                <fieldset>
+        				  <input placeholder="Hospital Message" class="form-control" type="text" id="hospitalmessagetext"
+                  ngModel name="hospitalmessagetext" tabindex="1" required autofocus>
+        				</fieldset>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" #closehospital>Cancel</button>
+            <button  type="submit" id="hospital-submit" class="btn btn-primary">Save Hospital</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END IDENTIFY HOSPITAL Modal -->
 </section>

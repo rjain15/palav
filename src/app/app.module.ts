@@ -39,12 +39,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {ResourceService} from './service/resource.service';
 import {ContactService} from './service/contact.service';
 import {EventService} from './service/event.service';
+import {SponserService} from './service/sponser.service';
+import {VolunteerService} from './service/volunteer.service';
+import {HospitalService} from './service/hospital.service';
 
 import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
 import { VideoComponent } from './components/video/video.component';
 
 import { SafePipe } from './pipes/safe.pipe';
 import { GoalsComponent } from './components/goals/goals.component';
+
+
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
@@ -84,9 +89,11 @@ firebase.initializeApp(firebaseConfig);
     FlashMessagesModule,
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(appRoutes)
+
     //Ng2PageScrollModule.forRoot()
   ],
-  providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,ResourceService,ContactService,EventService],
+  providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,
+    ResourceService,ContactService,EventService,SponserService,VolunteerService,HospitalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

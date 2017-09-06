@@ -25,6 +25,89 @@ const gmailPassword = encodeURIComponent(functions.config().gmail.password);
 const mailTransport = nodemailer.createTransport(
     `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
+exports.sendVolunteerInfo = functions.database.ref('/Palav/volunteerdata/{email}').onCreate(event => {
+          const snapshot = event.data;
+          const val = snapshot.val();
+
+          console.log('value is:'+JSON.stringify(val));
+
+          const mailOptions = {
+            from: '"Palav." <noreply@palav.com>',
+            to: 'dipen.acs@gmail.com'
+          };
+
+          mailOptions.subject = 'Palav Volunteer Informatio!';
+          mailOptions.text = 'Thanks you for contacting to our Palav VOLUNTEER.' + JSON.stringify(val);
+          return mailTransport.sendMail(mailOptions).then(() => {
+            console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+          }).catch(error => {
+            console.error('There was an error while sending the email:', error);
+          });
+
+});
+
+exports.sendHospitalInfo = functions.database.ref('/Palav/hospitaldata/{email}').onCreate(event => {
+          const snapshot = event.data;
+          const val = snapshot.val();
+
+          console.log('value is:'+JSON.stringify(val));
+
+          const mailOptions = {
+            from: '"Palav." <noreply@palav.com>',
+            to: 'dipen.acs@gmail.com'
+          };
+
+          mailOptions.subject = 'Palav Hospital Data!';
+          mailOptions.text = 'Thanks you for contacting to our Palav HOSPITAL.' + JSON.stringify(val);
+          return mailTransport.sendMail(mailOptions).then(() => {
+            console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+          }).catch(error => {
+            console.error('There was an error while sending the email:', error);
+          });
+
+});
+
+exports.sendSponserInfo = functions.database.ref('/Palav/sponserdata/{email}').onCreate(event => {
+      const snapshot = event.data;
+      const val = snapshot.val();
+
+      console.log('value is:'+JSON.stringify(val));
+
+      const mailOptions = {
+        from: '"Palav." <noreply@palav.com>',
+        to: 'dipen.acs@gmail.com'
+      };
+
+      mailOptions.subject = 'Palav Sponser Information!';
+      mailOptions.text = 'Thanks you for contacting to our Palav Sponser.' + JSON.stringify(val);
+      return mailTransport.sendMail(mailOptions).then(() => {
+        console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+      }).catch(error => {
+        console.error('There was an error while sending the email:', error);
+      });
+
+});
+
+exports.sendContactEmail = functions.database.ref('/Palav/contactus/{email}').onCreate(event => {
+  const snapshot = event.data;
+  const val = snapshot.val();
+
+  console.log('value is:'+JSON.stringify(val));
+
+  const mailOptions = {
+    from: '"Palav." <noreply@palav.com>',
+    to: 'dipen.acs@gmail.com'
+  };
+
+  mailOptions.subject = 'Palav Contact US!';
+  mailOptions.text = 'Thanks you for contacting to our Palav newsletter.';
+  return mailTransport.sendMail(mailOptions).then(() => {
+    console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+  }).catch(error => {
+    console.error('There was an error while sending the email:', error);
+  });
+
+});
 // Sends an email confirmation when a user changes his mailing list subscription.
 exports.sendEmailConfirmation = functions.database.ref('/Palav/saveinfo/{userid}').onCreate(event => {
   const snapshot = event.data;
@@ -41,7 +124,7 @@ console.log('value is:'+JSON.stringify(val));
 
   // The user just subscribed to our newsletter.
   //if (val.subscribedToMailingList) {
-    mailOptions.subject = 'Thanks and Welcome!';
+    mailOptions.subject = 'Palav Save Resources!';
     mailOptions.text = 'Thanks you for subscribing to our Palav newsletter.';
     return mailTransport.sendMail(mailOptions).then(() => {
       console.log('New subscription confirmation email sent to:', val.userid);

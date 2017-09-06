@@ -24,8 +24,8 @@ export class ContactComponent implements OnInit
     this.contactData = new  ContactData(''+new Date(),form.value.contname,form.value.contemail,form.value.contphone,form.value.conturl,form.value.contmessage);
     this.contactService.updateContactData(this.contactData).then(
       (item) =>
-      { 
-	console.log(item.key); 
+      {
+	console.log(item.key);
       });
   }
 
