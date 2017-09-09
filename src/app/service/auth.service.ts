@@ -71,7 +71,7 @@ getUser()
 }
 
   isAuthenticated() {
-    console.log('this.token:' + firebase.auth().currentUser);
+    //console.log('this.token:' + firebase.auth().currentUser);
     return this.token != null;
   }
 }

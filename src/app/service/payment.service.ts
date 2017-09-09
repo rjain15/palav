@@ -7,25 +7,22 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 
 import { ResourcesData } from '../components/resources/resourcesdata';
 
-
 @Injectable()
-export class ResourceService
+export class PaymentService
 {
-  resourcedatpath: string = '/Palav/data/';
+  resourcedatpath: string = '/Palav/paymentdata/';
   items: FirebaseListObservable<any[]>;
   listings: FirebaseListObservable<any[]>;
 
-  constructor(public afd: AngularFireDatabase) {
-	  this.listings = this.afd.list('/Palav/saveinfo/');
+  constructor(public afd: AngularFireDatabase)
+  {
+    this.listings = this.afd.list(this.resourcedatpath);
   }
 
-  getResourceData(): Observable<ResourcesData[]>
+  savepayment(paymentdata)
   {
-    return this.afd.list(this.resourcedatpath);
+    console.log('inside paymentdata');
+    return this.listings.push(paymentdata);
   }
 
-  updateResourceData(listing)
-  {
-	return this.listings.push(listing);
-  }
 }

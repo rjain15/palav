@@ -25,6 +25,28 @@ const gmailPassword = encodeURIComponent(functions.config().gmail.password);
 const mailTransport = nodemailer.createTransport(
     `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
+
+    exports.sendPaymentsInfo = functions.database.ref('/Palav/paymentdata/{email}').onCreate(event => {
+              const snapshot = event.data;
+              const val = snapshot.val();
+
+              console.log('value is:'+JSON.stringify(val));
+
+              const mailOptions = {
+                from: '"Palav." <noreply@palav.com>',
+                to: 'dipen.acs@gmail.com'
+              };
+
+              mailOptions.subject = 'Palav Payment Information!';
+              mailOptions.text = 'Thanks you for donation to our Palav.' + JSON.stringify(val);
+              return mailTransport.sendMail(mailOptions).then(() => {
+                console.log('Palav Payment confirmation email sent to:', JSON.stringify(val));
+              }).catch(error => {
+                console.error('Palav Payment:There was an error while sending the email:', error);
+              });
+
+    });
+
 exports.sendVolunteerInfo = functions.database.ref('/Palav/volunteerdata/{email}').onCreate(event => {
           const snapshot = event.data;
           const val = snapshot.val();
@@ -39,9 +61,9 @@ exports.sendVolunteerInfo = functions.database.ref('/Palav/volunteerdata/{email}
           mailOptions.subject = 'Palav Volunteer Informatio!';
           mailOptions.text = 'Thanks you for contacting to our Palav VOLUNTEER.' + JSON.stringify(val);
           return mailTransport.sendMail(mailOptions).then(() => {
-            console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+            console.log('Palav Volunteer: confirmation email sent to:', JSON.stringify(val));
           }).catch(error => {
-            console.error('There was an error while sending the email:', error);
+            console.error('Palav Volunteer:There was an error while sending the email:', error);
           });
 
 });
@@ -60,9 +82,9 @@ exports.sendHospitalInfo = functions.database.ref('/Palav/hospitaldata/{email}')
           mailOptions.subject = 'Palav Hospital Data!';
           mailOptions.text = 'Thanks you for contacting to our Palav HOSPITAL.' + JSON.stringify(val);
           return mailTransport.sendMail(mailOptions).then(() => {
-            console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+            console.log('Palav Hospital:New subscription confirmation email sent to:', JSON.stringify(val));
           }).catch(error => {
-            console.error('There was an error while sending the email:', error);
+            console.error('Palav Hospital:There was an error while sending the email:', error);
           });
 
 });
@@ -81,9 +103,9 @@ exports.sendSponserInfo = functions.database.ref('/Palav/sponserdata/{email}').o
       mailOptions.subject = 'Palav Sponser Information!';
       mailOptions.text = 'Thanks you for contacting to our Palav Sponser.' + JSON.stringify(val);
       return mailTransport.sendMail(mailOptions).then(() => {
-        console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+        console.log('Palav Sponser:New subscription confirmation email sent to:', JSON.stringify(val));
       }).catch(error => {
-        console.error('There was an error while sending the email:', error);
+        console.error('Palav Sponser:There was an error while sending the email:', error);
       });
 
 });
@@ -102,9 +124,9 @@ exports.sendContactEmail = functions.database.ref('/Palav/contactus/{email}').on
   mailOptions.subject = 'Palav Contact US!';
   mailOptions.text = 'Thanks you for contacting to our Palav newsletter.';
   return mailTransport.sendMail(mailOptions).then(() => {
-    console.log('New subscription confirmation email sent to:', JSON.stringify(val));
+    console.log('Palav Contact:New subscription confirmation email sent to:', JSON.stringify(val));
   }).catch(error => {
-    console.error('There was an error while sending the email:', error);
+    console.error('Palav Contact:There was an error while sending the email:', error);
   });
 
 });
@@ -127,9 +149,9 @@ console.log('value is:'+JSON.stringify(val));
     mailOptions.subject = 'Palav Save Resources!';
     mailOptions.text = 'Thanks you for subscribing to our Palav newsletter.';
     return mailTransport.sendMail(mailOptions).then(() => {
-      console.log('New subscription confirmation email sent to:', val.userid);
+      console.log('Palav Save:New subscription confirmation email sent to:', val.userid);
     }).catch(error => {
-      console.error('There was an error while sending the email:', error);
+      console.error('Palav Save:There was an error while sending the email:', error);
     });
   //}
 

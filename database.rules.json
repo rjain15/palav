@@ -1,6 +1,40 @@
 {
   "rules": {
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "auth != null",
+    "Palav": {
+        "contactus": {
+          ".read": "auth != null",
+            ".write":true
+        },
+        "data": {
+          ".read": true,
+            ".write": false
+        },
+        "eventsinfo": {
+          ".read": true,
+          ".write":false
+        },
+        "saveinfo": {
+          ".read": true,
+          ".write":"auth != null"
+        },
+        "hospitaldata": {
+          ".read": "auth != null",
+            ".write":true
+        },
+        "sponserdata": {
+          ".read": "auth != null",
+            ".write":true
+        },
+        "volunteerdata": {
+          ".read": "auth != null",
+            ".write":true
+        },
+        "paymentdata": {
+          ".read": "auth != null",
+            ".write":true
+        }
+      }
   }
 }

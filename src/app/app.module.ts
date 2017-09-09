@@ -42,6 +42,7 @@ import {EventService} from './service/event.service';
 import {SponserService} from './service/sponser.service';
 import {VolunteerService} from './service/volunteer.service';
 import {HospitalService} from './service/hospital.service';
+import {PaymentService} from './service/payment.service';
 
 import { ResourcefilterPipe } from './components/resources/resourcefilter.pipe';
 import { VideoComponent } from './components/video/video.component';
@@ -49,7 +50,7 @@ import { VideoComponent } from './components/video/video.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { GoalsComponent } from './components/goals/goals.component';
 
-
+import * as ngCore from '@angular/core'
 
 const appRoutes: Routes = [
   {path:'', component:MainComponent},
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
 ]
 
 firebase.initializeApp(firebaseConfig);
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ firebase.initializeApp(firebaseConfig);
     ResourcefilterPipe,
     VideoComponent,
     SafePipe,
-    GoalsComponent
+    GoalsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -88,12 +91,14 @@ firebase.initializeApp(firebaseConfig);
     HttpModule,
     FlashMessagesModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(appRoutes)
-
+    RouterModule.forRoot(appRoutes),
+    //window['paypal'].Button.driver('angular2', ngCore)
+    //paypal.Button.driver('angular2', ng.core)
     //Ng2PageScrollModule.forRoot()
   ],
   providers: [FirebaseService,AngularFireDatabase,AuthService,AuthGuardService,AngularFireAuth,
-    ResourceService,ContactService,EventService,SponserService,VolunteerService,HospitalService],
+    ResourceService,ContactService,EventService,SponserService,VolunteerService,
+    HospitalService,PaymentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
