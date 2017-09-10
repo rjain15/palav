@@ -167,14 +167,14 @@ export class ServicesComponent implements OnInit {
 
   ngAfterViewChecked()
   {
-    if(!this.didRenderPaypal)
+    /*if(!this.didRenderPaypal)
     {
       this.loadPaypalScript().then(() =>
       {
         paypal.Button.render(this.paypalConfig, '#paypal-button');
          this.loading = false;
       });
-    }
+    }*/
    }
 
 }
