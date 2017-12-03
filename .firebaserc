@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "jsgddir"
+    "default": "palav-e8b2f",
+    "palav-staging": "palav-e8b2f"
   }
 }

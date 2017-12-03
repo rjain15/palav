@@ -34,7 +34,7 @@ const mailTransport = nodemailer.createTransport(
 
               const mailOptions = {
                 from: '"Palav." <noreply@palav.com>',
-                to: 'dipen.acs@gmail.com'
+                to: 'rjain15@gmail.com'
               };
 
               mailOptions.subject = 'Palav Payment Information!';
@@ -55,7 +55,7 @@ exports.sendVolunteerInfo = functions.database.ref('/Palav/volunteerdata/{email}
 
           const mailOptions = {
             from: '"Palav." <noreply@palav.com>',
-            to: 'dipen.acs@gmail.com'
+            to: 'rjain15@gmail.com'
           };
 
           mailOptions.subject = 'Palav Volunteer Informatio!';
@@ -76,7 +76,7 @@ exports.sendHospitalInfo = functions.database.ref('/Palav/hospitaldata/{email}')
 
           const mailOptions = {
             from: '"Palav." <noreply@palav.com>',
-            to: 'dipen.acs@gmail.com'
+            to: 'rjain15@gmail.com'
           };
 
           mailOptions.subject = 'Palav Hospital Data!';
@@ -97,7 +97,7 @@ exports.sendSponserInfo = functions.database.ref('/Palav/sponserdata/{email}').o
 
       const mailOptions = {
         from: '"Palav." <noreply@palav.com>',
-        to: 'dipen.acs@gmail.com'
+        to: 'rjain15@gmail.com'
       };
 
       mailOptions.subject = 'Palav Sponser Information!';
@@ -118,7 +118,7 @@ exports.sendContactEmail = functions.database.ref('/Palav/contactus/{email}').on
 
   const mailOptions = {
     from: '"Palav." <noreply@palav.com>',
-    to: 'dipen.acs@gmail.com'
+    to: 'rjain15@gmail.com'
   };
 
   mailOptions.subject = 'Palav Contact US!';
